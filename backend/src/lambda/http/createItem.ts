@@ -2,16 +2,16 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import 'source-map-support/register'
 import * as middy from 'middy'
 import { cors } from 'middy/middlewares'
-import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
+import { CreateItemRequest } from '../../requests/CreateItemRequest'
 import { getUserId } from '../utils';
-import { createTodo } from '../../businessLogic/todos'
+import { createItem } from '../../businessLogic/items'
 
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
-      const newTodo: CreateTodoRequest = JSON.parse(event.body)
+      const newItem: CreateItemRequest = JSON.parse(event.body)
       const userId = getUserId(event)
-      const newItem = await createTodo(newTodo, userId)
+      const newIte = await createItem(newItem, userId)
       //
       return {
         statusCode : 201,
@@ -20,7 +20,7 @@ export const handler = middy(
           'Access-Control-Allow-Credentials': true
         },
         body: JSON.stringify({
-          item: newItem
+          item: newIte
         })
       }
     } catch (error) {
@@ -32,7 +32,7 @@ export const handler = middy(
           'Access-Control-Allow-Credentials': true
         },
         body: JSON.stringify({
-          error: "Error: Cannot create new TODO"})
+          error: "Error: Cannot create new cart Item"})
       }
     }
   })

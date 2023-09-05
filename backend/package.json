@@ -1,7 +1,7 @@
 {
-  "name": "todo-hoc-serverless",
+  "name": "item-cart-serverless",
   "version": "1.0.0",
-  "description": "Serverless TODO image app",
+  "description": "Serverless CART items app",
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/http-errors": "^1.8.2",

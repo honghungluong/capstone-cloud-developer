@@ -7,18 +7,13 @@
       "type": "string",
       "minLength": 1
     },
-    "dueDate": {
-      "type": "string",
-      "minLength": 1
-    },
-    "done": {
-      "type": "boolean"
+    "price": {
+      "type": "string"
     }
   },
   "required": [
     "name",
-    "dueDate",
-    "done"
+    "price"
   ],
   "additionalProperties": false
 }

@@ -4,7 +4,7 @@ import * as AWSXRay from 'aws-xray-sdk'
 const XAWS = AWSXRay.captureAWS(AWS)
 
 
-// TODO: Implement the fileStogare logic
+// the fileStogare logic
 export class AttachmentUtils {
     static bucketName: any
 
@@ -29,10 +29,10 @@ export class AttachmentUtils {
         })
     }
 
-    async deleteAttachment(todoId: string)  {        
+    async deleteAttachment(itemId: string)  {        
         await this.s3.deleteObject({
             Bucket: this.bucketName,
-            Key: todoId
+            Key: itemId
         }).promise()
     }
 }

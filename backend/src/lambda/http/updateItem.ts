@@ -2,17 +2,17 @@ import 'source-map-support/register'
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
-import { updateTodo } from '../../businessLogic/todos'
-import { UpdateTodoRequest } from '../../requests/UpdateTodoRequest'
+import { updateItem } from '../../businessLogic/items'
+import { UpdateItemRequest } from '../../requests/UpdateItemRequest'
 import { getUserId } from '../utils'
 
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
-      const todoId = event.pathParameters.todoId
-      const updatedTodo: UpdateTodoRequest = JSON.parse(event.body)
+      const itemId = event.pathParameters.itemId
+      const updatedItem: UpdateItemRequest = JSON.parse(event.body)
       const userId: string = getUserId(event)
-      const updateItem = await updateTodo(todoId, userId, updatedTodo)
+      const updateIte = await updateItem(itemId, userId, updatedItem)
   
       return {
         statusCode: 200,
@@ -20,7 +20,7 @@ export const handler = middy(
           'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
-          "item": updateItem
+          "item": updateIte
         })
       }
     } catch (error) {
@@ -28,7 +28,7 @@ export const handler = middy(
       return {
         statusCode: 500,
         body: JSON.stringify({
-          error: "Error: Cannot update TODO"})
+          error: "Error: Cannot update Item"})
         }
       }
     })
