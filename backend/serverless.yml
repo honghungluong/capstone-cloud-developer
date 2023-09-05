@@ -1,7 +1,7 @@
 # TODO: Change the name of the org 
 org: samdana12
 app: udagram-hoc-serverless
-service: serverless-todo-app
+service: capstone-todo-app
 frameworkVersion: 3.34.0
 
 plugins:
@@ -23,23 +23,14 @@ provider:
   # Use these variables in the functions and resouorces section below. For example, 
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    TODOS_TABLE: Todos-${self:provider.stage}
+    TODOS_TABLE: Cap-Todos-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: serverless-p4-todo-images-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: capstone-todo-images-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
 
   logs:
     # Enable API Gateway logs
     restApi: true
-
-  # iam:
-  #   role:
-  #     statements:
-  #       - Effect: Allow
-  #         Action:
-  #           - xray:PutTelemetryRecords
-  #           - xray:PutTraceSegments
-  #         Resource: "*"
 
 
 functions:
@@ -149,7 +140,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: Allowx
+      - Effect: Allow
         Action:
           - s3:*
           - xray:PutTraceSegments          
@@ -248,7 +239,7 @@ resources:
       Type: AWS::S3::BucketPolicy
       Properties:
         PolicyDocument:
-          Id: Hunglh2TodoAppPolicy
+          Id: HungLH2CapstoneTodoAppPolicy
           Version: '2012-10-17'
           Statement:
             - Effect: Allow
