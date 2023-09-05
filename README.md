@@ -1,6 +1,6 @@
 # Serverless Wishlist
 
-A simple Wishlist Cart application using AWS Lambda and Serverless framework.
+A simple Wishlist items Cart application using AWS Lambda and Serverless framework.
 
 # Functionality of the application
 
